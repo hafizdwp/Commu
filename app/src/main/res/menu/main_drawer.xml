@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/drawer_group_top"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_profile"
+            android:icon="@drawable/profile"
+            android:title="Profile" />
+        <!--<item-->
+            <!--android:id="@+id/drawer_help"-->
+            <!--android:icon="@drawable/help"-->
+            <!--android:title="Help" />-->
+        <!--<item-->
+            <!--android:id="@+id/drawer_notification"-->
+            <!--android:icon="@drawable/notification"-->
+            <!--android:title="Notifications" />-->
+        <!--<item-->
+            <!--android:id="@+id/drawer_settings"-->
+            <!--android:icon="@drawable/settings"-->
+            <!--android:title="Settings" />-->
+    </group>
+
+    <group
+        android:id="@+id/drawer_group_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/drawer_logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+        <!--<item-->
+            <!--android:id="@+id/drawer_logout_paksa"-->
+            <!--android:icon="@drawable/logout"-->
+            <!--android:title="Logout Paksa" />-->
+    </group>
+
+    <!--<item android:title="Communicate">-->
+    <!--<menu>-->
+    <!--<item-->
+    <!--android:id="@+id/nav_share"-->
+    <!--android:icon="@drawable/ic_menu_share"-->
+    <!--android:title="Share" />-->
+    <!--<item-->
+    <!--android:id="@+id/nav_send"-->
+    <!--android:icon="@drawable/ic_menu_send"-->
+    <!--android:title="Send" />-->
+    <!--</menu>-->
+    <!--</item>-->
+
+</menu>

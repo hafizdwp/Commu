@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#002655">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_character" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:text="Commu"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <!--EMAIL-->
+            <EditText
+                android:id="@+id/signup_et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#fff"
+                android:drawableEnd="@drawable/ic_white_email"
+                android:drawableRight="@drawable/ic_white_email"
+                android:hint="Email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:textColor="#b3d62a"
+                android:textColorHint="#c9c9c9"
+                android:textSize="14sp" />
+
+
+            <!--USERNAME-->
+            <EditText
+                android:id="@+id/signup_et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#fff"
+                android:drawableEnd="@drawable/ic_white_username"
+                android:drawableRight="@drawable/ic_white_username"
+                android:hint="Username"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:textColor="#b3d62a"
+                android:textColorHint="#c9c9c9"
+                android:textSize="14sp" />
+
+            <!--FULLNAME-->
+            <EditText
+                android:id="@+id/signup_et_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#fff"
+                android:drawableEnd="@drawable/ic_white_username"
+                android:drawableRight="@drawable/ic_white_username"
+                android:hint="Fullname"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:textColor="#b3d62a"
+                android:textColorHint="#c9c9c9"
+                android:textSize="14sp" />
+
+            <!--PASSWORD-->
+            <EditText
+                android:id="@+id/signup_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#fff"
+                android:drawableEnd="@drawable/ic_white_password"
+                android:drawableRight="@drawable/ic_white_password"
+                android:hint="Password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:textColor="#b3d62a"
+                android:textColorHint="#c9c9c9"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/signup_btn"
+                style="@style/CustomButtonInverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:text="Signup"
+                android:textAllCaps="true" />
+
+            <include layout="@layout/custom_divider" />
+
+            <TextView
+                android:id="@+id/signup_tv_backtologin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Back to Login screen"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

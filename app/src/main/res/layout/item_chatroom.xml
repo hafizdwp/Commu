@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp">
+
+    <ImageView
+        android:id="@+id/item_chatroom_iv"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="#aaa" />
+
+    <TextView
+        android:id="@+id/item_chatroom_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/bg_item_chatroom"
+        android:maxWidth="240dp"
+        android:padding="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/item_chatroom_iv"
+        tools:text="Lorem ipsum dolor sit amet" />
+
+    <TextView
+        android:id="@+id/item_chatroom_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_chatroom_tv"
+        app:layout_constraintRight_toLeftOf="@+id/item_chatroom_tv"
+        tools:text="11:40 PM" />
+
+</android.support.constraint.ConstraintLayout>

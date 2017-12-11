@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_character" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:text="COMMU"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccentMuda"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <!--username-->
+        <com.cielyang.android.clearableedittext.ClearableEditText
+            android:id="@+id/login_et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:hint="Username"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
+
+        <!--password-->
+        <com.cielyang.android.clearableedittext.ClearableEditText
+            android:id="@+id/login_et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:hint="Password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
+
+        <!--button login-->
+        <Button
+            android:id="@+id/login_btn"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:paddingLeft="64dp"
+            android:paddingRight="64dp"
+            android:text="Login"
+            android:textAllCaps="true"
+            android:textSize="18sp" />
+
+        <View style="@style/CustomDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="12">
+
+            <!--signup-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account?"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/login_tv_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Sign Up"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!--divider-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="#808080" />
+
+            </LinearLayout>
+
+            <!--forpass-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot your password?"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/login_tv_forpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="16dp"
+                    android:text="Forgot Password"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <!--/parent-->
+    </LinearLayout>
+
+</ScrollView>

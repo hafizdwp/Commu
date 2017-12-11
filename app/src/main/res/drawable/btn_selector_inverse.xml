@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--<item android:drawable="@drawable/custom_btn_normal_pressed"-->
+<!--android:state_pressed="true" />-->
+<!--<item android:drawable="@drawable/custom_btn_normal_pressed"-->
+<!--android:state_focused="true"/>-->
+<!--<item android:drawable="@drawable/custom_btn_normal" />-->
+<!--</selector>-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/custom_btn_inverse_normal_pressed"
+          android:state_focused="true"/>
+    <item android:drawable="@drawable/custom_btn_inverse_normal_pressed"
+          android:state_pressed="true"/>
+    <item android:drawable="@drawable/custom_btn_inverse_normal"/>
+</selector>

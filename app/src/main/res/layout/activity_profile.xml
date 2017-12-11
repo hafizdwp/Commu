@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--parent-->
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--toolbar-->
+        <include layout="@layout/base_toolbar"/>
+
+        <!--content-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!--foto-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:id="@+id/profile_civ"
+                            android:layout_width="125dp"
+                            android:layout_height="125dp"
+                            app:civ_border="true"
+                            app:civ_border_color="#eeeeee"
+                            app:civ_border_width="4dp"
+                            app:civ_shadow="true"
+                            app:civ_shadow_radius="5"/>
+
+                        <TextView
+                            android:id="@+id/profile_tv_changephoto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Change photo"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12sp"/>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <!--profile content-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--email-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        app:contentPadding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Email"
+                                    android:textColor="@color/colorAccent"/>
+
+                                <TextView
+                                    android:id="@+id/profile_tv_email"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="email"/>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+                    </LinearLayout>
+
+
+                    <!--username-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/profile_cv_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:contentPadding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Username"
+                                    android:textColor="@color/colorAccent"/>
+
+                                <TextView
+                                    android:id="@+id/profile_tv_username"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="username"/>
+
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/selectcontact_btn"/>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+                    </LinearLayout>
+
+                    <!--fullname-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/profile_cv_fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:contentPadding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Fullname"
+                                    android:textColor="@color/colorAccent"/>
+
+                                <TextView
+                                    android:id="@+id/profile_tv_fullname"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="fullname"/>
+
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/selectcontact_btn"/>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+                    </LinearLayout>
+
+                    <!--friends-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/profile_cv_friends"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:contentPadding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Friends"
+                                    android:textColor="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/selectcontact_btn"/>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <!--change password-->
+            <Button
+                android:id="@+id/profile_btn_changepass"
+                style="@style/CustomButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:text="Change Password"
+                android:textAllCaps="true"
+                />
+
+        </LinearLayout>
+        <!--end of content-->
+
+
+    </LinearLayout>
+    <!--end of parent-->
+
+</ScrollView>
+
