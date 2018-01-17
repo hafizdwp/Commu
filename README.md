@@ -30,8 +30,8 @@ The **Firebase** database Schema :
 ```
 
 
-## The current minus feature :
-  - cannot upload image yet.
-  - the current glide in the app skip all caches method. so the image will load everytime a "refresh" event trigerred. fixing this soon.
+## Current minus feature :
+  - cannot upload image (on send message) yet.
+  - select image from gallery (to change profile picture) script only work for xiaomi's phone. other than that will result in crash.
 
 
