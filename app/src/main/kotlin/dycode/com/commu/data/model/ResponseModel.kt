@@ -81,7 +81,7 @@ data class ChangepassModel(val oldPassword: String,
 //
 data class ChangepassResponse(@SerializedName("meta") val meta: Meta)
 
-//
+
 //
 //search
 data class SearchData(@SerializedName("username") val username: String,
@@ -158,3 +158,7 @@ data class MyroomModel(val idroom: String,
                        val username: String,
                        var photo: String?,
                        var fullname: String?)
+
+data class PushnotifModel(val token: String,
+                          val title: String,
+                          val message: String)

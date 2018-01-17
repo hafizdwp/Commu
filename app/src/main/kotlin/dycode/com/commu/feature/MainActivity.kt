@@ -102,6 +102,10 @@ class MainActivity : BaseActivity(), MainView, NavigationView.OnNavigationItemSe
 
     override fun onResume() {
         super.onResume()
+        val myroom = tinyDB?.getInt(Constant.Pref.MYROOM)
+        if (myroom != null){
+            if(myroom==0) onMyroomSuccess(myroom)
+        }
         setupDrawerContent()
     }
 
@@ -139,10 +143,12 @@ class MainActivity : BaseActivity(), MainView, NavigationView.OnNavigationItemSe
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
         if (roomCount == 0) {
+            tinyDB?.putInt(Constant.Pref.MYROOM, 0)
             fragment = MainFragmentEmpty()
             fragmentTransaction.replace(R.id.main_frame, fragment)
             fragmentTransaction.commit()
         } else {
+            tinyDB?.putInt(Constant.Pref.MYROOM, 1)
             fragment = MainFragment()
             fragmentTransaction.replace(R.id.main_frame, fragment)
             fragmentTransaction.commit()
@@ -190,7 +196,7 @@ class MainActivity : BaseActivity(), MainView, NavigationView.OnNavigationItemSe
 
     override fun saveMyFCMToken() {
         val token = FirebaseInstanceId.getInstance().token
-        Log.i("EWEWEWEWEWE", token)
+        Log.i("Main FCMToken", token)
         val myUserId = tinyDB?.getString(Constant.Pref.USER_ID)
         val map = HashMap<String, String>()
         if (token != null) {
@@ -236,7 +242,9 @@ class MainActivity : BaseActivity(), MainView, NavigationView.OnNavigationItemSe
             val photo = this?.getString(Constant.Pref.PHOTO)
             tvNameDrawer?.text = fullname
             tvUsernameDrawer?.text = "@$username"
-            Bikin.glide(this@MainActivity, photo, mProfileImageView)
+            if(photo!=""){
+                Bikin.glide(this@MainActivity, photo, mProfileImageView)
+            }else Bikin.glide(this@MainActivity, R.drawable.profile_grey, mProfileImageView)
         }
     }
 }

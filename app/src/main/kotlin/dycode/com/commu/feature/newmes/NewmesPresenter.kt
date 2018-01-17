@@ -46,13 +46,15 @@ class NewmesPresenter(val dataManager: DataManager,
                         }
                     }
                     mvpView?.showLoading(false)
+                    mvpView?.showLabel(true)
                     mvpView?.onGetFriendlistSuccess(friendlistModel)
 
                 }, { error: Throwable? ->
                     Log.e(TAG, error.toString())
                     val networkError = NetworkError(error)
                     mvpView?.showLoading(false)
-                    mvpView?.showError(networkError.appErrorCode, networkError.appErrorMessage)
+                    mvpView?.showLabel(false)
+//                    mvpView?.showError(networkError.appErrorCode, networkError.appErrorMessage)
                 })
     }
 

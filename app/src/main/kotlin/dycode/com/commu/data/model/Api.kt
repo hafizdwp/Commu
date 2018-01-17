@@ -76,4 +76,8 @@ interface Api {
 
     @POST(Constant.URL.ROOM)
     fun createNewRoom(@Body model: NewroomModel): Observable<ApiResponse<NewroomData>>
+
+    @POST(Constant.URL.PUSHNOTIF)
+    fun pushnotif(@Body model: PushnotifModel): Observable<Meta>
+
 }

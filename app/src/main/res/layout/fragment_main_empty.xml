@@ -36,15 +36,15 @@
 
         <Button
             android:id="@+id/main_btn_newmessage"
+            style="@style/CustomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/custom_btn_normal"
             android:drawableLeft="@drawable/ic_32dp_email"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="Send a message"
-            android:textColor="@color/colorAccent"/>
+            android:textAllCaps="true"
+            android:text="Send a message" />
 
     </LinearLayout>
 

@@ -36,13 +36,18 @@ class SearchPresenter(val dataManager: DataManager) : BasePresenter<SearchPiew>(
                     val list = response.data
                     for (i in list.indices) {
                         with(list[i]) {
-                            val obj = SearchModel(
-                                    username,
-                                    email,
-                                    this.data.fullname,
-                                    this.data.photo
-                            )
-                            arrSearchModel.add(obj)
+
+                            //hanya untuk akun dummy yg blm ada fullname
+                            //tapi emailnya ngaco
+                            if(this.data.fullname != null){
+                                val obj = SearchModel(
+                                        username,
+                                        email,
+                                        this.data.fullname,
+                                        this.data.photo
+                                )
+                                arrSearchModel.add(obj)
+                            }
                         }
                     }
                     mvpView?.showLoading(false)

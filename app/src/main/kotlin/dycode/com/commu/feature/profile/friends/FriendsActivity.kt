@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.MenuItem
+import android.view.View
 import com.bumptech.glide.Glide
 import dycode.com.commu.utils.DividerItemDecoration
 import dycode.com.commu.R
@@ -47,6 +49,9 @@ class FriendsActivity : BaseActivity(), FriendsView {
         friends_rv.itemAnimator = DefaultItemAnimator()
         friends_rv.adapter = mAdapter
 
+        //label kalau belum punya friends
+        friends_label.visibility = View.INVISIBLE
+
         //load friends
         mPresenter?.getFriendlist()
     }
@@ -64,6 +69,13 @@ class FriendsActivity : BaseActivity(), FriendsView {
     override fun onGetFriendlistSuccess(friendlist: ArrayList<FriendlistModel>) {
         mAdapter?.addAllItem(friendlist)
         friends_tv_total.text = "Total :"+friendlist.size.toString()
+    }
+
+    override fun showLabel(isHaveFriend: Boolean) {
+        if(isHaveFriend)
+            friends_label.visibility = View.GONE
+        else
+            friends_label.visibility = View.VISIBLE
     }
 
     override fun showLoading(isShow: Boolean) {

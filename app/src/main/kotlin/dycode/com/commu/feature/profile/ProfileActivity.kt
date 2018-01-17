@@ -14,6 +14,7 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -33,11 +34,14 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import java.net.URI
 
 /**
  * Created by Asus on 11/16/2017.
  */
 class ProfileActivity : BaseActivity(), ProfileView, View.OnClickListener {
+
+    val TAG = "ProfileActivity"
 
     var mPresenter: ProfilePresenter? = null
 
@@ -123,26 +127,38 @@ class ProfileActivity : BaseActivity(), ProfileView, View.OnClickListener {
     //khusus image picker
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Log.i(TAG, "$requestCode, $resultCode, $data")
 
-        baseShowToast("$requestCode, $resultCode, $data")
-
+//        baseShowToast("$requestCode, $resultCode, $data")
         if (data != null) {
-            val uriSelectedImage: Uri? = data.data
-            val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-            val cursor: Cursor? = contentResolver?.query(uriSelectedImage, filePathColumn, null, null, null) ?: return
-
-            cursor?.moveToFirst()
-
-            val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
-            val filePath = columnIndex?.let { cursor?.getString(it) }
-
-            cursor?.close()
-
+//            val uriSelectedImage: Uri? = data.data
+//            val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+//            val cursor: Cursor? = contentResolver?.query(uriSelectedImage, filePathColumn, null, null, null) ?: return
+//
+//            cursor?.moveToFirst()
+//
+//            val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
+//            val filePath = columnIndex?.let { cursor.getString(it) }
+//
+//            cursor?.close()
+            val filePath = getRealPath(data.data, this)
             val file = File(filePath)
+            Log.d(TAG, "Filename " + file.name)
             val requestBody = RequestBody.create(MediaType.parse("*/*"), file)
             val body: MultipartBody.Part = MultipartBody.Part.createFormData("photo", file.name, requestBody)
 
             mPresenter?.updatePhotoProfile(body)
+        }
+    }
+
+    fun getRealPath(uri: Uri, activity: ProfileActivity): String{
+        val cursor = activity.contentResolver.query(uri, null, null, null, null)
+        return if(cursor==null){
+            uri.path
+        }else{
+            cursor.moveToFirst()
+            val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            cursor.getString(idx)
         }
     }
 

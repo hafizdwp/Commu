@@ -15,6 +15,8 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         />
 
     <FrameLayout
@@ -44,6 +46,7 @@
                 android:background="@null"
                 android:gravity="center_vertical"
                 android:hint="Write a message..."
+                android:maxHeight="80dp"
                 android:padding="8dp"
                 android:textSize="14sp" />
 

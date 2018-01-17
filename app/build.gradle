@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -49,10 +50,12 @@ dependencies {
     implementation 'com.github.Cielsk:clearable-edittext:0.0.3'
     implementation 'com.github.bumptech.glide:glide:3.8.0'
     implementation 'com.mikhaellopez:circularimageview:3.0.2'
+
     //firebase
     implementation 'com.google.firebase:firebase-database:11.4.2'
     implementation 'com.google.firebase:firebase-messaging:11.4.2'
     implementation 'com.firebaseui:firebase-ui-database:3.1.0'
+
     //networking
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
@@ -61,6 +64,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation 'io.reactivex:rxjava:1.1.6'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

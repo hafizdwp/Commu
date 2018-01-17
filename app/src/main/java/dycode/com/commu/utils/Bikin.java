@@ -7,6 +7,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import dycode.com.commu.R;
+
 /**
  * Created by Asus on 11/14/2017.
  */
@@ -24,8 +26,6 @@ public class Bikin {
     public static void glide(Context context, String target, ImageView imageView){
         Glide.with(context)
                 .load(target)
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transform(new CircleTransform(context))
                 .into(imageView);
     }
@@ -33,8 +33,6 @@ public class Bikin {
     public static void glide(Context context, int target, ImageView imageView){
         Glide.with(context)
                 .load(target)
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transform(new CircleTransform(context))
                 .into(imageView);
     }

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Total"/>
+            android:text="Total : 0"/>
 
         <View
             android:layout_width="match_parent"
@@ -37,6 +37,37 @@
             android:layout_height="wrap_content">
 
         </android.support.v7.widget.RecyclerView>
+
+        <!--label-->
+        <RelativeLayout
+            android:id="@+id/friends_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/friends_label_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:text="It seems like you don't have friends, yet!"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/friends_label_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/friends_label_text"
+                android:layout_alignRight="@id/friends_label_text"
+                android:layout_below="@id/friends_label_text"
+                android:drawableLeft="@drawable/ic_32dp_add_grey"
+                android:drawablePadding="16dp"
+                android:paddingRight="16dp"
+                android:text="Search and make a new one using Search feature by tapping Search Button in Message screen " />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

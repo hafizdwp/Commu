@@ -38,10 +38,14 @@ class FriendsAdapter(val glide: RequestManager) : RecyclerView.Adapter<FriendsAd
                 item_friends_username.text = "@${friendlistModel.username}"
                 item_friends_fullname.text = friendlistModel.fullname
 
-                glide.load(friendlistModel.photo)
-                        .skipMemoryCache(true)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .into(item_friends_iv)
+                if(friendlistModel.photo != null){
+                    glide.load(friendlistModel.photo)
+                            .into(item_friends_iv)
+                }else{
+                    glide.load(R.drawable.profile_grey)
+                            .into(item_friends_iv)
+                }
+
                 //Bikin.glide(this.context, friendlistModel.photo, item_friends_iv)
             }
         }

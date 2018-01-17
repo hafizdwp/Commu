@@ -15,7 +15,7 @@ public class Constant {
         public static final String BASE = "http://dcnode.southeastasia.cloudapp.azure.com:8035/api/v1/";
         public static final String LOGIN = BASE + "signin";
         public static final String USER = BASE + "user";
-        public static final String  SIGNUP = BASE + "register";
+        public static final String SIGNUP = BASE + "register";
         public static final String FORPASS = BASE + "forgot";
         public static final String ROOM = BASE + "room";
         public static final String LOGOUT = BASE + "logout";
@@ -23,6 +23,7 @@ public class Constant {
         public static final String FRIENDS = BASE + "user/friend";
         public static final String SEARCH = BASE + "user/search";
         public static final String FIND_USER = BASE + "user/find";
+        public static final String PUSHNOTIF = BASE + "fcm";
     }
 
     public class Pref {
@@ -40,6 +41,7 @@ public class Constant {
         public static final String PASSWORD = "password";
 
         public static final String UPDATE_PROFILE = "updateProfile";
+        public static final String MYROOM = "myroom";
     }
 
     public class Node {

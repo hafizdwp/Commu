@@ -20,7 +20,7 @@ class ProfilePresenter(val dataManager: DataManager) : BasePresenter<ProfileView
     var subPhoto: Subscription? = null
 
     fun updatePhotoProfile(body: MultipartBody.Part) {
-        if(!isViewAttached) return
+//        if(!isViewAttached) return
 
         mvpView?.showLoading(true)
         subPhoto = dataManager.updatePhotoProfile(body)

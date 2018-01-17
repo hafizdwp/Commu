@@ -9,4 +9,5 @@ import dycode.com.commuchatapp.data.model.FriendlistModel
 interface FriendsView : MvpView {
 
     fun onGetFriendlistSuccess(friendlist: ArrayList<FriendlistModel>)
+    fun showLabel(isHaveFriend: Boolean)
 }

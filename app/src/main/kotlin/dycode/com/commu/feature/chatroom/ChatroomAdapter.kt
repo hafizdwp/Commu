@@ -19,6 +19,7 @@ import dycode.com.commu.R
 import dycode.com.commu.cons.Constant
 import dycode.com.commu.data.dto.MessageDto
 import dycode.com.commu.data.dto.UserDto
+import dycode.com.commu.utils.CircleTransform
 import dycode.com.commu.utils.TinyDB
 import java.text.SimpleDateFormat
 import java.util.*
@@ -61,23 +62,23 @@ class ChatroomAdapter(options: FirebaseRecyclerOptions<MessageDto>,
 
                 holder?.ivAvatar?.visibility = ImageView.VISIBLE
                 if (obj != null) {
-                    if (position == 0) {
+//                    if (position == 0) {
+                    if(photo == ""){
+                        glide.load(R.drawable.profile_grey)
+                                .transform(CircleTransform(holder?.itemView?.context))
+                                .into(holder?.ivAvatar)
+                    }else{
                         glide.load(photo)
-                                .skipMemoryCache(true)
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                .transform(CircleTransform(holder?.itemView?.context))
                                 .into(holder?.ivAvatar)
                     }
-                    if (position > 0) {
-                        val dtoBefore = getItem(position - 1)
-                        if (dtoBefore?.iduser == iduser) {
-                            holder?.ivAvatar?.visibility = ImageView.INVISIBLE
-                        } else {
-                            glide.load(photo)
-                                    .skipMemoryCache(true)
-                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                    .into(holder?.ivAvatar)
-                        }
-                    }
+
+//                    }
+//                    if (position > 0) {
+//                        glide.load(photo)
+//                                .transform(CircleTransform(holder?.itemView?.context))
+//                                .into(holder?.ivAvatar)
+//                    }
                 }
             }
         })

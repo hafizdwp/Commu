@@ -105,10 +105,11 @@ open class BaseActivity : AppCompatActivity() {
     fun baseShowSuccess(message: String) = baseShowAlertDialog("Success", message)
 
     fun baseShowError(errorCode: Int, errorMessage: String) {
-        when(errorCode){
-            HTTP_BAD_REQUEST -> baseShowToast(errorMessage)
-            HTTP_NOT_FOUND -> baseShowToast(errorMessage)
-            else -> baseShowToast("$errorCode $errorMessage")
-        }
+        baseShowToast(errorMessage)
+//        when(errorCode){
+//            HTTP_BAD_REQUEST -> baseShowToast(errorMessage)
+//            HTTP_NOT_FOUND -> baseShowToast(errorMessage)
+//            else -> baseShowToast("$errorCode $errorMessage")
+//        }
     }
 }

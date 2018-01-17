@@ -60,4 +60,6 @@ class DataManager(val api: Api) {
 //
     fun createNewRoom(model: NewroomModel): Observable<ApiResponse<NewroomData>>
             = api.createNewRoom(model)
+
+    fun pushnotif(model: PushnotifModel): Observable<Meta> = api.pushnotif(model)
 }

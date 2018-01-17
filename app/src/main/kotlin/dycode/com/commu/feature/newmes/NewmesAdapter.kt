@@ -40,11 +40,14 @@ class NewmesAdapter(val activity: NewmesActivity,
             with(itemView){
                 item_newmes_tv_name.text = model.fullname
                 item_newmes_tv_username.text = "@${model.username}"
-                glide.load(model.photo)
-                        .skipMemoryCache(true)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .into(item_newmes_iv)
-                //Bikin.glide(context, model.photo, item_newmes_iv)
+                if(model.photo != null){
+                    glide.load(model.photo)
+                            .into(item_newmes_iv)
+                }else{
+                    glide.load(R.drawable.profile_grey)
+                            .into(item_newmes_iv)
+                }
+
 
                 setOnClickListener{
                     activity.newRoom(model)

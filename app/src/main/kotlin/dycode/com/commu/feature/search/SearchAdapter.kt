@@ -38,18 +38,14 @@ class SearchAdapter(val activity: SearchActivity,
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         fun bind(activity: SearchActivity, searchModel: SearchModel, glide: RequestManager) {
             with(itemView) {
-                item_search_tv_name.text = searchModel.fullname ?: "unnamed"
+                item_search_tv_name.text = searchModel.fullname
                 item_search_tv_username.text = "@${searchModel.username}"
                 if (searchModel.photo != null)
                     glide.load(searchModel.photo)
-                            .skipMemoryCache(true)
-                            .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .into(item_search_iv)
                 //Bikin.glide(this.context, searchModel.photo, item_search_iv)
                 else
-                    glide.load(R.drawable.dummy_profile)
-                            .skipMemoryCache(true)
-                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    glide.load(R.drawable.profile_grey)
                             .into(item_search_iv)
                 //Bikin.glide(this.context, R.drawable.dummy_profile, item_search_iv)
 

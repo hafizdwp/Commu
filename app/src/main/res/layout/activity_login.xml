@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -27,33 +28,71 @@
             android:textStyle="bold" />
 
         <!--username-->
-        <com.cielyang.android.clearableedittext.ClearableEditText
-            android:id="@+id/login_et_username"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
-            android:hint="Username"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingBottom="20dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
+            android:layout_height="wrap_content">
 
-        <!--password-->
-        <com.cielyang.android.clearableedittext.ClearableEditText
-            android:id="@+id/login_et_password"
+            <EditText
+                android:id="@+id/login_et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="Username or Email"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/colorAccent"
-            android:hint="Password"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:paddingBottom="20dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/login_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="Password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <!--<com.cielyang.android.clearableedittext.ClearableEditText-->
+            <!--android:id="@+id/login_et_username"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:backgroundTint="@color/colorAccent"-->
+            <!--android:hint="Username or Email"-->
+            <!--android:imeOptions="actionNext"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:paddingBottom="20dp"-->
+            <!--android:textColor="@color/colorPrimary"-->
+            <!--android:textSize="14sp" />-->
+
+        <!--&lt;!&ndash;password&ndash;&gt;-->
+        <!--<com.cielyang.android.clearableedittext.ClearableEditText-->
+            <!--android:id="@+id/login_et_password"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:backgroundTint="@color/colorAccent"-->
+            <!--android:hint="Password"-->
+            <!--android:imeOptions="actionDone"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:maxLines="1"-->
+            <!--android:paddingBottom="20dp"-->
+            <!--android:textColor="@color/colorPrimary"-->
+            <!--android:textSize="14sp" />-->
 
         <!--button login-->
         <Button

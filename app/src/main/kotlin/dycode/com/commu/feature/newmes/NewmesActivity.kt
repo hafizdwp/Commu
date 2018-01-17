@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.bumptech.glide.Glide
 import dycode.com.commu.R
 import dycode.com.commu.cons.Constant
@@ -50,6 +51,9 @@ class NewmesActivity : BaseActivity(), NewmesView, SearchView.OnQueryTextListene
         newmes_rv.itemAnimator = DefaultItemAnimator()
         newmes_rv.adapter = mAdapter
 
+        //label kalau belum punya friends
+        newmes_label.visibility = View.INVISIBLE
+
         mPresenter?.getFriendlist()
     }
 
@@ -90,7 +94,7 @@ class NewmesActivity : BaseActivity(), NewmesView, SearchView.OnQueryTextListene
         mPresenter?.detachView()
     }
 
-    /* ===== MvpView implementation ====x= */
+    /* ===== MvpView implementation ===== */
 
     var presenter: NewmesPresenter? = null
 
@@ -104,6 +108,7 @@ class NewmesActivity : BaseActivity(), NewmesView, SearchView.OnQueryTextListene
 
     override fun onNewRoomSuccess(idroom: String, otherUserId: String, friendlistModel: FriendlistModel) {
         presenter?.detachView()
+        tinyDB?.putInt(Constant.Pref.MYROOM, 1)
         ChatroomActivity.start(this, otherUserId, MyroomModel(
                 idroom,
                 friendlistModel.username,
@@ -115,6 +120,11 @@ class NewmesActivity : BaseActivity(), NewmesView, SearchView.OnQueryTextListene
     override fun onGetFriendlistSuccess(arrFriendlistModel: ArrayList<FriendlistModel>) {
         mAdapter?.clearItems()
         mAdapter?.addAllItems(arrFriendlistModel)
+    }
+
+    override fun showLabel(isHaveFriend: Boolean) {
+        if(isHaveFriend) newmes_label.visibility = View.GONE
+        else newmes_label.visibility = View.VISIBLE
     }
 
     override fun showLoading(isShow: Boolean) {

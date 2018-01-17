@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.RequestManager
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DataSnapshot
@@ -21,7 +20,6 @@ import dycode.com.commu.data.dto.MessageDto
 import dycode.com.commu.data.dto.MyroomDto
 import dycode.com.commu.data.dto.UserDto
 import dycode.com.commu.feature.chatroom.ChatroomActivity
-import dycode.com.commu.utils.Bikin
 import dycode.com.commuchatapp.data.model.MyroomModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -42,7 +40,7 @@ class MainFragmentAdapter(options: FirebaseRecyclerOptions<MyroomDto>,
         val idroom = getRef(position).getKey()
         val iduser = model?.iduser
         val lastMessageKey = model?.lastMessageKey
-        val lastTimeStamp = model?.lastTimeStamp
+        val lastTimeStamp = model?.lastTimestamp
         val context = holder?.itemView?.context
 
         //get fullname, photo, and set click listener
@@ -60,10 +58,14 @@ class MainFragmentAdapter(options: FirebaseRecyclerOptions<MyroomDto>,
                     holder?.tvName?.text = name
 
                     if (photo != null) {
-                        glide.load(photo)
-                                .skipMemoryCache(true)
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .into(holder?.ivAvatar)
+                        if(photo == ""){
+                            glide.load(R.drawable.profile_grey)
+                                    .into(holder?.ivAvatar)
+                        }else{
+                            glide.load(photo)
+                                    .into(holder?.ivAvatar)
+                        }
+
                         //Bikin.glide(context, photo, holder?.ivAvatar)
                     }
 
@@ -112,7 +114,6 @@ class MainFragmentAdapter(options: FirebaseRecyclerOptions<MyroomDto>,
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyroomHolder {
         return MyroomHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_main, parent, false))
     }
-
 
     class MyroomHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivAvatar: ImageView = itemView.findViewById(R.id.item_main_iv)

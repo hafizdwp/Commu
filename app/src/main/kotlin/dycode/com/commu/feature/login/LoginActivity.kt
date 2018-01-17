@@ -41,8 +41,8 @@ class LoginActivity : BaseActivity(), LoginView, View.OnClickListener {
             gotoMain()
         }
 
-        login_et_username.setText("hafizdwp")
-        login_et_password.setText("123456")
+//        login_et_username.setText("hafizdwp")
+//        login_et_password.setText("123456")
 
         login_btn.setOnClickListener(this)
         login_tv_forpass.setOnClickListener(this)

@@ -17,11 +17,10 @@ import dycode.com.commu.cons.Constant
 import dycode.com.commu.feature.base.BaseActivity
 import dycode.com.commu.data.dto.MessageDto
 import dycode.com.commu.utils.TinyDB
+import dycode.com.commuchatapp.data.DataManager
 import dycode.com.commuchatapp.data.model.MyroomModel
 import kotlinx.android.synthetic.main.activity_chatroom.*
 import kotlinx.android.synthetic.main.base_toolbar.*
-import okhttp3.*
-import java.io.IOException
 
 /**
  * Created by Asus on 11/17/2017.
@@ -56,6 +55,8 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
     var adapter: ChatroomAdapter? = null
     lateinit var linearLayoutManager: LinearLayoutManager
 
+    var mPresenter: ChatroomPresenter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatroom)
@@ -64,6 +65,8 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
         baseSetupToolbar(true, true, intent.extras[EXTRA_OTHER_FULLNAME].toString())
 
         tinyDB = TinyDB(this)
+        mPresenter = ChatroomPresenter(DataManager(baseGetBearerApi(this)))
+        mPresenter?.attachView(this)
 
         //set other users node to firebase
         checkIfUserExists()
@@ -104,6 +107,7 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.chatroom_btn_send -> {
+                if(chatroom_et_msg.text.toString() == "") return
                 val idroom = intent.extras[EXTRA_IDROOM].toString()
                 val myUserId = tinyDB?.getString(Constant.Pref.USER_ID)
                 val otherUserId = intent.extras[EXTRA_OTHER_USERID].toString()
@@ -130,7 +134,7 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
                         if (!dataSnapshot.exists()) {
                             val map = HashMap<String, Any>()
                             map.put("lastMessageKey", randomKey)
-                            map.put("lastTimeStamp", ServerValue.TIMESTAMP)
+                            map.put("lastTimestamp", ServerValue.TIMESTAMP)
                             map.put("iduser", otherUserId)
                             map.put("unreadMessage", 0)
                             firebaseRoomRef.child(myUserId).child(idroom).ref.setValue(map).addOnCompleteListener {
@@ -139,7 +143,7 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
 
                             val otherMap = HashMap<String, Any>()
                             otherMap.put("lastMessageKey", randomKey)
-                            otherMap.put("lastTimeStamp", ServerValue.TIMESTAMP)
+                            otherMap.put("lastTimestamp", ServerValue.TIMESTAMP)
                             otherMap.put("iduser", myUserId)
                             otherMap.put("unreadMessage", 1)
                             firebaseRoomRef.child(otherUserId).child(idroom).ref.setValue(otherMap).addOnCompleteListener {
@@ -149,7 +153,7 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
 
                             val map = HashMap<String, Any>()
                             map.put("lastMessageKey", randomKey)
-                            map.put("lastTimeStamp", ServerValue.TIMESTAMP)
+                            map.put("lastTimestamp", ServerValue.TIMESTAMP)
                             firebaseRoomRef.child(myUserId).child(idroom).updateChildren(map).addOnCompleteListener {
                                 Log.i(TAG, "myroom updated")
                             }
@@ -163,7 +167,7 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
                                     val unread = p0?.value as Long + 1
                                     val otherMap = HashMap<String, Any>()
                                     otherMap.put("lastMessageKey", randomKey)
-                                    otherMap.put("lastTimeStamp", ServerValue.TIMESTAMP)
+                                    otherMap.put("lastTimestamp", ServerValue.TIMESTAMP)
                                     otherMap.put("unreadMessage", unread)
                                     firebaseRoomRef.child(otherUserId).child(idroom).updateChildren(otherMap).addOnCompleteListener {
                                         Log.i(TAG, "other user room updated")
@@ -182,30 +186,13 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if(dataSnapshot.exists()){
                             val token = (dataSnapshot.value as Map<*,*>)["token"].toString()
-                            val client = OkHttpClient()
-                            val body = FormBody.Builder()
-                                    .add("token", token)
-                                    .add("title", tinyDB?.getString(Constant.Pref.FULLNAME)!!)
-                                    .add("message", text)
-                                    .build()
 
-                            val request = Request.Builder()
-                                    .url("http://192.168.42.176/fcm/pushnotif.php")
-                                    .post(body)
-                                    .build()
+                            val mToken = token
+                            val mTitle = tinyDB?.getString(Constant.Pref.FULLNAME)!!
+                            val mMessage = text
 
-                            try {
-                                client.newCall(request).enqueue(object: Callback {
-                                    override fun onFailure(call: Call?, e: IOException?) {
-                                        e?.printStackTrace()
-                                    }
-                                    override fun onResponse(call: Call?, response: Response?) {
-                                        Log.i(TAG, "notifications should arrived")
-                                    }
-                                })
-                            } catch (e: IOException) {
-                                e.printStackTrace()
-                            }
+                            mPresenter?.pushnotif(mToken, mTitle, mMessage)
+
                         }
                     }
                 })
@@ -223,6 +210,11 @@ class ChatroomActivity : BaseActivity(), ChatroomView, View.OnClickListener{
     override fun onPause() {
         super.onPause()
         adapter?.stopListening()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter?.detachView()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

@@ -54,7 +54,7 @@ class MainFragment : BaseFragment(), MainFragmentView {
 
         println(myUserId)
 
-        val query = firebaseRoomRef.child(myUserId).orderByChild("lastTimeStamp")
+        val query = firebaseRoomRef.child(myUserId).orderByChild("lastTimestamp")
         val options = FirebaseRecyclerOptions.Builder<MyroomDto>()
                 .setQuery(query, MyroomDto::class.java)
                 .build()

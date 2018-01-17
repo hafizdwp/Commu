@@ -12,4 +12,5 @@ interface NewmesView : MvpView {
     fun newRoom(friendlistModel: FriendlistModel)
     fun onNewRoomSuccess(idroom: String, otherUserId: String, friendlistModel: FriendlistModel)
     fun onGetFriendlistSuccess(arrFriendlistModel: ArrayList<FriendlistModel>)
+    fun showLabel(isHaveFriend: Boolean)
 }

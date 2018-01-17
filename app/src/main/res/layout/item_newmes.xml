@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,7 +11,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="10dp">
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/item_newmes_iv"
@@ -21,7 +23,7 @@
             app:civ_border_color="#eeeeee"
             app:civ_border_width="2dp"
             app:civ_shadow="true"
-            app:civ_shadow_radius="1"/>
+            app:civ_shadow_radius="1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,16 +38,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama"
-                android:textColor="#2b2b2b"
+                android:textColor="@color/colorAccent"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/item_newmes_tv_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="username"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -56,14 +58,14 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/selectcontact_btn"/>
+            android:background="@drawable/selectcontact_btn" />
 
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#d9d9d9"/>
+        android:background="#d9d9d9" />
 
 
 </LinearLayout>
